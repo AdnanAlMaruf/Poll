@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('polls', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id')->nullable(); // Add the category_id column
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null'); // Set up foreign key constraint
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

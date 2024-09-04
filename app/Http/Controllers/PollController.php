@@ -15,6 +15,7 @@ class PollController extends Controller
     public function create()
     {
         $categories = Category::all();
+
         return view('poll.create', compact('categories'));
     }
     public function store(CreatePollRequest $request)
@@ -43,16 +44,11 @@ class PollController extends Controller
 
     public function filterByCategory($id)
     {
-         $categories = Category::all();
-        // $category = Category::where('name', $categoryName)->first();
+        $categories = Category::all();
 
-        // if ($category) {
-        //     $polls = Poll::where('category_id', $category->id)->get();
-        // } else {
-        //     $polls = Poll::all();
-        // }
-        $polls = Poll::where('category_id',$id)->get();
-        return view('poll.index', compact('polls','categories'));
+        $polls = Poll::where('category', $id)->get();
+        //dd($id);
+        return view('poll.index', compact('polls', 'categories'));
     }
     public function edit($id)
     {

@@ -37,14 +37,19 @@
                         @enderror
                     </div>
 
-
                     <div class="input-field col s4">
-                        <input required="required" name="category" id="category" type="text" class="validate">
+                        <select name="category" id="category">
+                            <option value="" disabled selected>Select a Category</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                         <label for="category">Category</label>
                         @error('category')
                             {{ $message }}
                         @enderror
                     </div>
+
 
                     <div class="input-field col s4">
                         <input required="required" type="text" class="datepicker" placeholder="start date"
@@ -121,12 +126,17 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var dates = document.querySelectorAll('.datepicker');
-            var instances = M.Datepicker.init(dates);
-            var tiems = document.querySelectorAll('.timepicker');
-            var instances = M.Timepicker.init(tiems);
+            var timepickers = document.querySelectorAll('.timepicker');
+            var selects = document.querySelectorAll('select');
+
+            M.Datepicker.init(dates);
+            M.Timepicker.init(timepickers);
+            M.FormSelect.init(selects);
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
 </body>
 
 </html>
