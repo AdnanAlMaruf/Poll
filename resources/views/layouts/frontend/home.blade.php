@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <title>Poll Agent - Template</title>
+    <title>Poll</title>
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -41,7 +41,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="{{route('home')}}" class="logo">
+                        <a href="{{ route('home') }}" class="logo">
                             <h1>Polling Agent</h1>
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -62,7 +62,9 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     @foreach ($categories as $category)
-                                        <li><a class="dropdown-item" href="{{ route('poll.filter', $category->name) }}">{{ $category->name }}</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('poll.filter', $category->name) }}">{{ $category->name }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
 
@@ -107,11 +109,11 @@
                 <div class="col-lg-8 col-md-8">
                     <div class="section-heading">
                         <h6>About Us</h6>
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravid risus commodo.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravid risus commodo.</p>
+                        <h2>Welcome to Policy Avatar!</h2>
+                        <p>Your opinion is the driving force behind shaping your nation. Whether it's politics,
+                            economics, society, or culture—let your voice be heard fearlessly and confidently. Our goal
+                            is not just to provide a platform for expression but to ensure that your voice reaches the
+                            country's policymakers. Let’s Shape our future together.</p>
                         <div class="main-button mt-3">
                             <a href="#">Veiw Details</a>
                         </div>

@@ -6,10 +6,10 @@
         </div>
     @endif
     <div class="container">
-        <div class="row">
+        <div class="row ms-2">
             <div class="col-md-12">
                 <div class="box box-primary">
-                    <div class="box-header with-border">
+                    <div class="box-header with-border mt-3 mb-4">
                         <h3 class="box-title">Create Category</h3>
                     </div>
 
@@ -19,20 +19,21 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>Category name*</label>
+                                        <label class="mb-1">Category name*</label>
                                         <input type="text" name="name" class="form-control"
                                             placeholder="Category name" value="{{ old('name') }}" required />
                                     </div>
                                 </div>
 
+                            </div>
+                            <div class="row mt-3">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>Category Description</label>
+                                        <label class="mb-1">Category Description</label>
                                         <input type="text" name="description" class="form-control"
                                             placeholder="Category name" value="{{ old('description') }}" required />
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="box-footer mt-4">

@@ -3,7 +3,6 @@
 @section('content')
 <div class="container">
     <div class="row header-text">
-        <div class="col-lg-1"></div>
         @foreach ($polls as $poll)
             <div class="col-lg-5">
                 <div class="card mb-4">
@@ -68,7 +67,6 @@
                 </div>
             </div>
         @endforeach
-        <div class="col-lg-1"></div>
     </div>
 </div>
 

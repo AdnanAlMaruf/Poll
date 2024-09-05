@@ -19,18 +19,18 @@ class VoteController extends Controller
             'option_id' => 'required|exists:options,id',
 
         ]);
-        $ipAddress = $request->ip();
-        $existingVote = Vote::where('poll_id', $poll->id)
-                            ->where('ip_address', $ipAddress)
-                            ->first();
+        // $ipAddress = $request->ip();
+        // $existingVote = Vote::where('poll_id', $poll->id)
+        //                     ->where('ip_address', $ipAddress)
+        //                     ->first();
 
-        if ($existingVote) {
-            return redirect()->back()->with('error', 'You have already voted on this poll.');
-        }
+        // if ($existingVote) {
+        //     return redirect()->back()->with('error', 'You have already voted on this poll.');
+        // }
         Vote::create([
             'poll_id' => $poll->id,
             'option_id' => $validatedData['option_id'],
-            'ip_address' => $ipAddress,
+            // 'ip_address' => $ipAddress,
         ]);
 
         return back()->with('success', 'Thank you for your vote!');
@@ -70,6 +70,4 @@ class VoteController extends Controller
     //     return view('layouts.frontend.master', compact('poll', 'options', 'totalVotes'));
 
     // }
-
-
 }

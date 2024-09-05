@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row header-text">
-        <div class="col-lg-1"></div>
         @foreach ($polls as $poll)
-            <div class="col-lg-5">
+
+            <div class="col-lg-6">
                 <div class="card mb-4">
                     <div class="card-header text-center">Live Voting</div>
                     <div class="card-body">
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
+
         @endforeach
-        <div class="col-lg-1"></div>
     </div>
 </div>

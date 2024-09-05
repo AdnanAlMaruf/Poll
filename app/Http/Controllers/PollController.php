@@ -87,7 +87,7 @@ class PollController extends Controller
     {
         $poll = Poll::findOrFail($id);
         $poll->options()->delete(); // Delete associated options
-        $poll->delete(); // Delete the poll
+        $poll->delete();
 
         return redirect()->route('poll.list')->with('success', 'Poll deleted successfully!');
     }
