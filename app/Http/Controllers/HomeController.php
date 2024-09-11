@@ -51,13 +51,16 @@ class HomeController extends Controller
     }
     public function home()
     {
-        $polls = Poll::with('options.votes')->get();
+        $polls = Poll::with(['options.votes'])->get();
+
         foreach ($polls as $poll) {
             $totalVotes = $poll->options->sum(function ($option) {
                 return $option->votes->count();
             });
+
             $poll->options->each(function ($option) use ($totalVotes) {
                 $optionVotes = $option->votes->count();
+                $option->votes_count = $optionVotes; // Store vote count for chart
                 $option->percentage = $totalVotes > 0 ? number_format(($optionVotes / $totalVotes) * 100, 2) : 0;
             });
         }
@@ -65,4 +68,5 @@ class HomeController extends Controller
         $categories = Category::all();
         return view('layouts.frontend.home', compact('polls', 'categories'));
     }
+
 }

@@ -126,40 +126,12 @@
     <section class="section courses" id="courses">
         <div class="container">
             <ul class="event_filter">
-                <li>
-                    <a class="is_active" href="#!" data-filter="*">All</a>
-                </li>
-                <li>
-                    <a href="#!" data-filter=".p-bangladesh">Bangladesh Politics </a>
-                </li>
-                <li>
-                    <a href="#!" data-filter=".p-international">International Politics</a>
-                </li>
-                <li>
-                    <a href="#!" data-filter=".p-society">Social Issues</a>
-                </li>
-                <li>
-                    <a href="#!" data-filter=".p-culture">Culture</a>
-                </li>
-                <li>
-                    <a href="#!" data-filter=".p-enviroment">Enviroment</a>
-                </li>
-                <li>
-                    <a href="#!" data-filter=".p-technology">Technology</a>
-                </li>
-                <li>
-                    <a href="#!" data-filter=".p-technology">Economy</a>
-                </li>
-                <li>
-                    <a href="#!" data-filter=".p-technology">Urban Area</a>
-                </li>
-                <li>
-                    <a href="#!" data-filter=".p-women-empowerment">Women Empowerment</a>
-                </li>
-
-                <li>
-                    <a href="#!" data-filter=".p-technology">Others</a>
-                </li>
+                @foreach ($categories as $category)
+                    <li>
+                    <li><a class="dropdown-item"
+                            href="{{ route('poll.filter', $category->name) }}">{{ $category->name }}</a></li>
+                    </li>
+                @endforeach
             </ul>
             <div class="row event_box">
                 <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 p-bangladesh">

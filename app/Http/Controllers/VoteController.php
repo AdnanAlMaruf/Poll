@@ -52,22 +52,4 @@ class VoteController extends Controller
 
         return view('vote.results', compact('poll', 'options', 'totalVotes'));
     }
-    // public function pollResults(POll $poll)
-    // {
-    //     $poll->load('options.votes');
-
-    //     $totalVotes = $poll->votes->count();
-    //     $options = $poll->options->map(function ($option) use ($totalVotes) {
-    //         $optionVotes = $option->votes->count();
-    //         $percentage = $totalVotes > 0 ? ($optionVotes / $totalVotes) * 100 : 0;
-    //         return [
-    //             'content' => $option->content,
-    //             'votes' => $optionVotes,
-    //             'percentage' => number_format($percentage, 2),
-    //         ];
-    //     });
-
-    //     return view('layouts.frontend.master', compact('poll', 'options', 'totalVotes'));
-
-    // }
 }

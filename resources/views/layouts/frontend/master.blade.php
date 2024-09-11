@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/owl.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    @stack('styles')
 </head>
 
 <body>
@@ -533,7 +533,6 @@
     <script src="{{asset('assets/js/owl-carousel.js')}}"></script>
     <script src="{{asset('assets/js/counter.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     {{-- <script type="text/javascript">
         $("document").ready(function() {
             setTimeout(function() {
@@ -541,6 +540,7 @@
             }, 5000);
         })
     </script> --}}
+    @stack('scripts')
 </body>
 
 </html>

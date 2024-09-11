@@ -1,45 +1,52 @@
-@extends('layouts.backend.app')
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laravel 11 Yajra Datatables Tutorial - ItSolutionStuff.com</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+</head>
+<body>
 
-@section('content')
 <div class="container">
-    <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">sl no.</th>
-            <th scope="col">Title</th>
-            <th scope="col">Options</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($polls as $poll)
-                @php $first = true; @endphp
-                @foreach($poll->options as $option)
+    <div class="card mt-5">
+        <h3 class="card-header p-3">Datatables</h3>
+        <div class="card-body">
+            <table class="table table-bordered data-table">
+                <thead>
                     <tr>
-                        @if($first)
-                            <th scope="row">{{$loop->parent->iteration}}</th> <!-- Corrected serial number -->
-                            <td>{{ $poll->title }}</td>
-                            @php $first = false; @endphp
-                        @else
-                            <td></td>
-                            <td></td>
-                        @endif
-                        <td>{{ $option->content }}</td>
-                        @if($loop->first)
-                        <td rowspan="{{ $poll->options->count() }}">
-                            <a href="{{ route('vote.results', $poll->id) }}">Show</a>
-                            {{-- <a href="{{ route('poll.edit', $poll->id) }}">Edit</a> --}}
-                            <form action="{{ route('poll.destroy', $poll->id) }}" method="POST" style="display:inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this poll?')">Delete</button>
-                            </form>
-                        </td>
-                        @endif
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Option</th>
+                        <th width="100px">Action</th>
                     </tr>
-                @endforeach
-            @endforeach
-        </tbody>
-      </table>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-@endsection
+
+</body>
+
+<script type="text/javascript">
+  $(function () {
+
+    var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('poll.list') }}",
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'title', name: 'title'},
+            {data: 'options', name: 'options'},
+            {data: 'action', name: 'action', orderable: false, searchable: true},
+        ]
+    });
+
+  });
+</script>
+</html>
